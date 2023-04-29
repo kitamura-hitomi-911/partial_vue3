@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue3 の CDN利用</title>
+  </head>
+  <body>
+    <div class="l-wrapper">
+      こんにちは
+      <div id="app"></div>
+    </div>
+    <script type="importmap">
+      {
+        "imports": {
+          "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+        }
+      }
+    </script>
+    <script type="module" src="main.js" />
+  </body>
+</html>

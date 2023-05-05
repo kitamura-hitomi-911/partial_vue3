@@ -1,21 +1,34 @@
 import { createApp } from "vue";
+import { CmnBtn, FormInput } from "./web_components.js";
+
+// customElements.define("cmn-btn", CmnBtn, { extends: "button" });
+customElements.define("cmn-btn", CmnBtn);
+customElements.define("form-input", FormInput);
 
 const app = createApp({
   data() {
     return {
-      message: "Hello Vue!",
+      inputValue: "Hello Vue!",
     };
   },
+  template: "#app-template",
   methods: {
-    onClickBtn(params) {
-      console.log("★", params);
+    onClickCreateBtn(e) {
+      console.log("★onClickCreateBtn", e);
+    },
+    onClickOtherBtn(e) {
+      console.log("★onClickOtherBtn", e);
+    },
+    onFocus(e) {
+      console.log("★onFocus", e);
+    },
+    onChange(e) {
+      console.log("★onChnage", e);
+      this.inputValue = e.detail.value;
     },
   },
-  template: `
-    <div>{{ message }}<CmnBtn label="ボタンラベル！" @onClickBtn="onClickBtn" /></div>
-  `,
 });
-app.component("CmnBtn", {
+app.component("CurrentOption", {
   props: {
     label: {
       type: String,
@@ -29,18 +42,7 @@ app.component("CmnBtn", {
     },
   },
   template: `
-    <button @click="onClickBtn">{{label}}</button>
+    <div>CurrentOption</div>
   `,
 });
 app.mount("#app");
-/* 
-createApp({
-  data() {
-    return {
-      message: "Hello Vue!",
-    };
-  },
-  template: `
-    <div>{{ message }}<CmnBtn /></div>
-  `,
-}).mount("#app"); */

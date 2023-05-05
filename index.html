@@ -3,12 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <title>Vue3 の CDN利用</title>
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <div class="l-wrapper">
-      こんにちは
       <div id="app"></div>
     </div>
+    <script id="app-template" type="text/x-template">
+      <div class="l-container">
+        <div class="content-header">
+          <h1>キャンペーン</h1>
+          <cmn-btn label="新規作成" @click="onClickCreateBtn"></cmn-btn>
+        </div>
+        <p>こんにちは</p>
+        <div class="content" v-cloak>
+          <form-input type="text" name="hoge" :value="inputValue" @onFocus="onFocus" @onChange="onChange"></form-input>
+          <CurrentOption></CurrentOption>
+          <cmn-btn label="ボタンラベル！" @click="onClickOtherBtn" />
+        </div>
+      </div>
+    </script>
     <script type="importmap">
       {
         "imports": {
